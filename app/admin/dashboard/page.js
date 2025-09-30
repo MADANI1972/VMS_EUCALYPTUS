@@ -1,3 +1,4 @@
+'use client'
 import AdminNavbar from '@/components/AdminNavbar';
 import { useEffect,useState } from 'react';
 import supabase from '@/lib/supabaseClient';
