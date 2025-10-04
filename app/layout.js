@@ -1,15 +1,33 @@
 import '../styles/globals.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+export const metadata = {
+  title: 'VMS - Vehicle Management System',
+  description: 'Système de gestion de véhicules électriques',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body>
-        <header className="bg-gray-900 text-white py-4 text-center">
-          <h1 className="text-2xl font-bold">SARL HAPPY CAR STORE</h1>
-        </header>
-        <main className="container mx-auto py-8">{children}</main>
-        <footer className="bg-gray-900 text-white py-4 text-center">
-          <a href="https://maps.app.goo.gl/VzTyuCbgWuFNfEDn9" target="_blank" className="text-blue-400 hover:underline">Nous localiser</a>
-        </footer>
+      <head>
+        {/* RemixIcon CDN */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+        {/* Google Fonts - Pacifico */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased">
+        <Header />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
