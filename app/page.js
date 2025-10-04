@@ -11,7 +11,7 @@ export default function Home() {
   }, []);
 
   if (!mounted) {
-    return null; // Ou un loader
+    return null;
   }
 
   return (
@@ -87,6 +87,30 @@ export default function Home() {
               <p className="text-gray-600">
                 Tous nos véhicules sont contrôlés et garantis pour votre tranquillité
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-red-600 mb-2">100+</div>
+              <div className="text-gray-600">Véhicules en stock</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-red-600 mb-2">500+</div>
+              <div className="text-gray-600">Clients satisfaits</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-red-600 mb-2">10+</div>
+              <div className="text-gray-600">Années d'expérience</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-red-600 mb-2">24/7</div>
+              <div className="text-gray-600">Support client</div>
             </div>
           </div>
         </div>
