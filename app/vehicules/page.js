@@ -2,39 +2,55 @@
 
 import { useState, useEffect } from 'react';
 import ProductCard from '../../components/ProductCard';
+import { supabase } from '../../lib/supabaseClient';
 
 export default function VehiculesPage() {
   const [vehicules, setVehicules] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Charger les véhicules depuis votre API
-    // Pour l'instant, données de test
-    setVehicules([
-      {
-        id: 1,
-        model: 'Tesla Model 3',
-        category: 'Berline',
-        price: 45000,
-        image_url: 'https://via.placeholder.com/400x300',
-        in_stock: true
-      },
-      {
-        id: 2,
-        model: 'Nissan Leaf',
-        category: 'Compacte',
-        price: 32000,
-        image_url: 'https://via.placeholder.com/400x300',
-        in_stock: true
-      }
-    ]);
-    setLoading(false);
+    fetchVehicules();
   }, []);
+
+  const fetchVehicules = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('vehicles')
+        .select('*')
+        .eq('in_stock', true)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      setVehicules(data || []);
+    } catch (error) {
+      console.error('Erreur chargement véhicules:', error);
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p>Chargement...</p>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
+          <p>Chargement des véhicules...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded max-w-md">
+          <p className="font-bold">Erreur</p>
+          <p>{error}</p>
+        </div>
       </div>
     );
   }
@@ -46,11 +62,15 @@ export default function VehiculesPage() {
           Nos Véhicules
         </h1>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {vehicules.map(vehicule => (
-            <ProductCard key={vehicule.id} product={vehicule} />
-          ))}
-        </div>
+        {vehicules.length === 0 ? (
+          <p className="text-center text-gray-600">Aucun véhicule disponible.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {vehicules.map(vehicule => (
+              <ProductCard key={vehicule.id} product={vehicule} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
