@@ -1,7 +1,7 @@
 'use client'
 import AdminNavbar from '@/components/AdminNavbar';
 import { useEffect,useState } from 'react';
-import supabase from '@/lib/supabaseClient';
+import { supabase } from '../../lib/supabaseClient';
 export default function Dashboard(){
   const [vehiculess,setvehiculess]=useState([]);
   useEffect(()=>{ fetchvehiculess(); },[]);
