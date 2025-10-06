@@ -152,25 +152,22 @@ export default function AddVehicule() {
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-2">
-              Catégorie *
-            </label>
-            <select
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
-              required
-            >
-              <option value="">Sélectionner une catégorie</option>
-              <option value="Berline">Berline</option>
-              <option value="SUV">SUV</option>
-              <option value="SUV Premium">SUV Premium</option>
-              <option value="SUV Compact">SUV Compact</option>
-              <option value="Compacte">Compacte</option>
-              <option value="Citadine">Citadine</option>
-            </select>
-          </div>
+  <label className="block text-gray-700 font-medium mb-2">
+    Catégorie *
+  </label>
+  <select
+    name="category"
+    value={formData.category}
+    onChange={handleChange}
+    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
+    required
+  >
+    <option value="">Sélectionner une catégorie</option>
+    <option value="Moto">Moto</option>
+    <option value="Scooter">Scooter</option>
+    <option value="Vélo électrique">Vélo électrique</option>
+  </select>
+</div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
