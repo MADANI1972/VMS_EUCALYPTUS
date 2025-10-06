@@ -202,5 +202,55 @@ export default function AddVehicule() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 );
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Quantité en stock *
+              </label>
+              <input
+                type="number"
+                name="stock_quantity"
+                value={formData.stock_quantity}
+                onChange={handleChange}
+                min="0"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div className="flex items-center pt-8">
+              <label className="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="in_stock"
+                  checked={formData.in_stock}
+                  onChange={handleChange}
+                  className="w-5 h-5 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                />
+                <span className="ml-2 text-gray-700 font-medium">
+                  En stock
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <button
+              type="submit"
+              disabled={loading}
+              className="flex-1 bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:bg-gray-400"
+            >
+              {loading ? 'Ajout en cours...' : 'Ajouter le véhicule'}
+            </button>
+            <button
+              type="button"
+              onClick={() => router.push('/admin/dashboard')}
+              className="flex-1 bg-gray-500 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+            >
+              Annuler
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
