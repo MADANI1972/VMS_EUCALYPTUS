@@ -8,6 +8,7 @@ export default function AddVehicule() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
   
   const [formData, setFormData] = useState({
     model: '',
@@ -22,6 +23,9 @@ export default function AddVehicule() {
     stock_quantity: 0
   });
 
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
@@ -30,12 +34,68 @@ export default function AddVehicule() {
     }));
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 5000000) { // 5MB max
+        setError('La taille de l\'image ne doit pas dépasser 5MB');
+        return;
+      }
+      
+      setImageFile(file);
+      setImagePreview(URL.createObjectURL(file));
+      setError(null);
+    }
+  };
+
+  const uploadImage = async () => {
+    if (!imageFile) return null;
+
+    try {
+      setUploadingImage(true);
+      const fileExt = imageFile.name.split('.').pop();
+      const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { data, error } = await supabase.storage
+        .from('vehicle-images')
+        .upload(filePath, imageFile, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (error) throw error;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('vehicle-images')
+        .getPublicUrl(filePath);
+
+      return publicUrl;
+    } catch (error) {
+      console.error('Erreur upload image:', error);
+      throw new Error('Erreur lors de l\'upload de l\'image');
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
+      let imageUrl = formData.image_url;
+
+      // Upload l'image si un fichier est sélectionné
+      if (imageFile) {
+        imageUrl = await uploadImage();
+      }
+
+      if (!imageUrl) {
+        throw new Error('Veuillez fournir une image (URL ou fichier)');
+      }
+
       const { data, error } = await supabase
         .from('vehicles')
         .insert([{
@@ -45,7 +105,7 @@ export default function AddVehicule() {
           autonomy: formData.autonomy ? parseInt(formData.autonomy) : null,
           max_speed: formData.max_speed ? parseInt(formData.max_speed) : null,
           charging_time: formData.charging_time,
-          image_url: formData.image_url,
+          image_url: imageUrl,
           description: formData.description,
           in_stock: formData.in_stock,
           stock_quantity: parseInt(formData.stock_quantity)
@@ -173,18 +233,54 @@ export default function AddVehicule() {
             </div>
           </div>
 
-          <div>
-            <label className="block text-gray-700 font-medium mb-2">
-              URL de l'image
-            </label>
-            <input
-              type="url"
-              name="image_url"
-              value={formData.image_url}
-              onChange={handleChange}
-              placeholder="https://images.unsplash.com/photo-..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
-            />
+          {/* Section Image */}
+          <div className="border-t pt-6">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Image du véhicule</h3>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Charger depuis PC
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                />
+                <p className="text-sm text-gray-500 mt-1">
+                  Format: JPG, PNG, WebP. Taille max: 5MB
+                </p>
+              </div>
+
+              {imagePreview && (
+                <div className="mt-4">
+                  <p className="text-sm text-gray-700 mb-2">Aperçu:</p>
+                  <img
+                    src={imagePreview}
+                    alt="Aperçu"
+                    className="w-full h-64 object-cover rounded-lg border"
+                  />
+                </div>
+              )}
+
+              <div className="text-center text-gray-500">- OU -</div>
+
+              <div>
+                <label className="block text-gray-700 font-medium mb-2">
+                  URL de l'image
+                </label>
+                <input
+                  type="url"
+                  name="image_url"
+                  value={formData.image_url}
+                  onChange={handleChange}
+                  placeholder="https://images.unsplash.com/photo-..."
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                  disabled={imageFile !== null}
+                />
+              </div>
+            </div>
           </div>
 
           <div>
@@ -236,15 +332,16 @@ export default function AddVehicule() {
           <div className="flex gap-4">
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || uploadingImage}
               className="flex-1 bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:bg-gray-400"
             >
-              {loading ? 'Ajout en cours...' : 'Ajouter le véhicule'}
+              {uploadingImage ? 'Upload image...' : loading ? 'Ajout en cours...' : 'Ajouter le véhicule'}
             </button>
             <button
               type="button"
               onClick={() => router.push('/admin/dashboard')}
-              className="flex-1 bg-gray-500 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+              disabled={loading || uploadingImage}
+              className="flex-1 bg-gray-500 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors disabled:bg-gray-400"
             >
               Annuler
             </button>
