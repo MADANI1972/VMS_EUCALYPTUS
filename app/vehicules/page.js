@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ProductCard from '../../components/ProductCard';
-import { supabase } from '../../lib/supabaseClient';
-
+import { supabase } from '@/lib/supabaseClient';
 export default function VehiculesPage() {
   const [vehicules, setVehicules] = useState([]);
   const [loading, setLoading] = useState(true);
