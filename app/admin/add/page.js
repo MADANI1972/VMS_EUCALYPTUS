@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react';
-import supabase from '@/lib/supabaseClient'; import { useRouter } from 'next/navigation';
+import { supabase } from '../../lib/supabaseClient';
+import { useRouter } from 'next/navigation';
 export default function Addvehicules(){
   const [name,setName]=useState(''); const [description,setDescription]=useState(''); const [price,setPrice]=useState('');
   const [file,setFile]=useState(null); const router=useRouter();
