@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function ProductCard({ product }) {
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow">
@@ -13,7 +15,7 @@ export default function ProductCard({ product }) {
         <p className="text-sm text-gray-500 mb-3">{product.category}</p>
         
         {product.description && (
-          <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+          <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
         )}
 
         {/* Caractéristiques techniques */}
@@ -51,13 +53,21 @@ export default function ProductCard({ product }) {
             )}
           </div>
           
-          <span className={`inline-block w-full text-center px-3 py-2 rounded-lg text-sm font-medium ${
+          <span className={`inline-block w-full text-center px-3 py-2 rounded-lg text-sm font-medium mb-3 ${
             product.in_stock 
               ? 'bg-green-100 text-green-800' 
               : 'bg-red-100 text-red-800'
           }`}>
             {product.in_stock ? '✓ En stock' : '✗ Épuisé'}
           </span>
+
+          {/* Bouton Voir les détails */}
+          <Link 
+            href={`/vehicules/${product.id}`}
+            className="block w-full bg-red-600 text-white text-center py-2 rounded-lg hover:bg-red-700 transition-colors font-medium"
+          >
+            Voir les détails
+          </Link>
         </div>
       </div>
     </div>
