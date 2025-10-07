@@ -131,9 +131,7 @@ export default function VehiculeDetailPage() {
                     <i className="ri-archive-line text-2xl text-purple-600 mr-4"></i>
                     <div className="flex-1">
                       <p className="font-semibold text-gray-700">Disponibilité</p>
-                      <p className="text-gray-600">
-                        {vehicule.stock_quantity} en stock
-                      </p>
+                      <p className="text-gray-600">{vehicule.stock_quantity} en stock</p>
                     </div>
                   </div>
                 )}
@@ -152,7 +150,7 @@ export default function VehiculeDetailPage() {
                       ? 'bg-green-100 text-green-800' 
                       : 'bg-red-100 text-red-800'
                   }`}>
-                    {vehicule.in_stock ? '✓ Disponible' : '✗ Épuisé'}
+                    {vehicule.in_stock ? 'Disponible' : 'Épuisé'}
                   </span>
                 </div>
 
@@ -162,22 +160,20 @@ export default function VehiculeDetailPage() {
                       href="/contact"
                       className="block w-full bg-red-600 text-white text-center py-4 rounded-lg hover:bg-red-700 transition-colors font-semibold text-lg"
                     >
-                      <i className="ri-mail-line mr-2"></i>
                       Demander un devis
                     </Link>
-                    
+                    <Link
                       href="https://maps.app.goo.gl/VzTyuCbgWuFNfEDn9"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block w-full bg-gray-800 text-white text-center py-4 rounded-lg hover:bg-gray-900 transition-colors font-semibold text-lg"
                     >
-                      <i className="ri-map-pin-line mr-2"></i>
                       Visiter notre magasin
-                    </a>
+                    </Link>
                   </div>
                 ) : (
                   <div className="bg-gray-100 text-gray-600 text-center py-4 rounded-lg">
-                    Ce véhicule n est actuellement pas disponible
+                    Véhicule non disponible actuellement
                   </div>
                 )}
               </div>
