@@ -9,7 +9,7 @@ export default function ServicePage() {
       title: 'Maintenance Préventive',
       description: 'Contrôle complet de votre véhicule selon le planning constructeur',
       duration: '1h30',
-      price: '8 900 DA',
+      price: 'Sur devis',
       bgColor: 'bg-red-50',
       iconColor: 'text-red-600',
       inclus: [
@@ -24,7 +24,7 @@ export default function ServicePage() {
       title: 'Service Batterie',
       description: 'Diagnostic et maintenance de la batterie électrique',
       duration: '45min',
-      price: '4 900 DA',
+      price: 'Sur devis',
       bgColor: 'bg-red-50',
       iconColor: 'text-red-600',
       inclus: [
@@ -54,7 +54,7 @@ export default function ServicePage() {
       title: 'Mise à Jour',
       description: 'Mise à jour logicielle et optimisation des performances',
       duration: '30min',
-      price: '2 900 DA',
+      price: 'Sur devis',
       bgColor: 'bg-red-50',
       iconColor: 'text-red-600',
       inclus: [
@@ -189,21 +189,19 @@ export default function ServicePage() {
             Besoin d un service ?
           </h2>
           <p className="text-xl mb-8 text-red-100 max-w-2xl mx-auto">
-            Contactez-nous pour prendre rendez-vous ou obtenir plus d informations
+            Contactez-nous pour prendre rendez-vous
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center"
+              className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              <i className="ri-calendar-line mr-2"></i>
               Prendre rendez-vous
             </Link>
             
               href="tel:0550220589"
-              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors inline-flex items-center justify-center"
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
             >
-              <i className="ri-phone-line mr-2"></i>
               Appelez-nous
             </a>
           </div>
