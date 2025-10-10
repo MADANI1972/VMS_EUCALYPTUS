@@ -27,14 +27,10 @@ export default function ContactPage() {
 
     const subject = encodeURIComponent(`Contact VMS - ${formData.name}`);
     const body = encodeURIComponent(
-      `Nom: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Téléphone: ${formData.phone}\n\n` +
-      `Message:\n${formData.message}`
+      `Nom: ${formData.name}\nEmail: ${formData.email}\nTéléphone: ${formData.phone}\n\nMessage:\n${formData.message}`
     );
 
     window.location.href = `mailto:vmsleseucalyptus@gmail.com?subject=${subject}&body=${body}`;
-
     setStatus('Votre client email va s ouvrir');
     setLoading(false);
 
@@ -49,19 +45,13 @@ export default function ContactPage() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Contactez-nous
-            </h1>
-            <p className="text-xl text-gray-600">
-              Nous sommes là pour répondre à toutes vos questions
-            </p>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Contactez-nous</h1>
+            <p className="text-xl text-gray-600">Nous sommes là pour répondre à toutes vos questions</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">
-                Envoyez-nous un message
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Envoyez-nous un message</h2>
 
               {status && (
                 <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
@@ -71,69 +61,26 @@ export default function ContactPage() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Nom complet *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
-                    placeholder="Votre nom"
-                    required
-                  />
+                  <label className="block text-gray-700 font-medium mb-2">Nom complet *</label>
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent" placeholder="Votre nom" required />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
-                    placeholder="votre.email@exemple.com"
-                    required
-                  />
+                  <label className="block text-gray-700 font-medium mb-2">Email *</label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent" placeholder="votre.email@exemple.com" required />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Téléphone
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
-                    placeholder="0550 22 05 89"
-                  />
+                  <label className="block text-gray-700 font-medium mb-2">Téléphone</label>
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent" placeholder="0550 22 05 89" />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
-                    placeholder="Votre message..."
-                    required
-                  ></textarea>
+                  <label className="block text-gray-700 font-medium mb-2">Message *</label>
+                  <textarea name="message" value={formData.message} onChange={handleChange} rows="5" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent" placeholder="Votre message..." required></textarea>
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors disabled:bg-gray-400"
-                >
+                <button type="submit" disabled={loading} className="w-full bg-red-600 text-white py-4 rounded-lg font-semibold hover:bg-red-700 transition-colors disabled:bg-gray-400">
                   {loading ? 'Envoi...' : 'Envoyer le message'}
                 </button>
               </form>
@@ -141,9 +88,7 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               <div className="bg-white rounded-lg shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">
-                  Nos coordonnées
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Nos coordonnées</h2>
 
                 <div className="space-y-6">
                   <div className="flex items-start">
@@ -152,12 +97,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-2">Téléphone</h3>
-                      <a href="tel:0550220588" className="text-gray-600 hover:text-red-600 block">
-                        0550 22 05 88
-                      </a>
-                      <a href="tel:0550220589" className="text-gray-600 hover:text-red-600 block mt-1">
-                        0550 22 05 89
-                      </a>
+                      <a href="tel:0550220588" className="text-gray-600 hover:text-red-600 block">0550 22 05 88</a>
+                      <a href="tel:0550220589" className="text-gray-600 hover:text-red-600 block mt-1">0550 22 05 89</a>
                     </div>
                   </div>
 
@@ -167,12 +108,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-2">Email</h3>
-                      <a 
-                        href="mailto:vmsleseucalyptus@gmail.com" 
-                        className="text-gray-600 hover:text-red-600 break-all"
-                      >
-                        vmsleseucalyptus@gmail.com
-                      </a>
+                      <a href="mailto:vmsleseucalyptus@gmail.com" className="text-gray-600 hover:text-red-600 break-all">vmsleseucalyptus@gmail.com</a>
                     </div>
                   </div>
 
@@ -182,12 +118,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-2">Adresse</h3>
-                      <Link 
-                        href="https://maps.app.goo.gl/VzTyuCbgWuFNfEDn9" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-red-600"
-                      >
+                      <Link href="https://maps.app.goo.gl/VzTyuCbgWuFNfEDn9" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600">
                         Chararba les Eucalyptus, Alger
                       </Link>
                     </div>
@@ -199,13 +130,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-2">Facebook</h3>
-                      <Link 
-                        href="https://www.facebook.com/p/vms-%D8%A7%D9%84%D9%83%D8%A7%D9%84%D9%8A%D8%AA%D9%88%D8%B3-61577101538256/" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-red-600"
-                      >
-                        Visitez notre page Facebook
+                      <Link href="https://www.facebook.com/p/vms-61577101538256/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600">
+                        Notre page Facebook
                       </Link>
                     </div>
                   </div>
@@ -215,28 +141,11 @@ export default function ContactPage() {
           </div>
 
           <div className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-lg p-8 text-white text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Besoin d aide pour choisir ?
-          <div className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-lg p-8 text-white text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Besoin d aide pour choisir ?
-            </h2>
-            <p className="text-xl mb-6">
-              Notre équipe est là pour vous conseiller
-            </p>
+            <h2 className="text-3xl font-bold mb-4">Besoin d aide ?</h2>
+            <p className="text-xl mb-6">Notre équipe est là pour vous conseiller</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              
-                href="tel:0550220589"
-                className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-              >
-                Appelez-nous
-              </a>
-              <Link
-                href="/vehicules"
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
-              >
-                Voir nos véhicules
-              </Link>
+              <a href="tel:0550220589" className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Appelez-nous</a>
+              <Link href="/vehicules" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors">Voir nos véhicules</Link>
             </div>
           </div>
         </div>
