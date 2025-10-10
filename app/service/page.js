@@ -99,7 +99,6 @@ export default function ServicePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -111,7 +110,6 @@ export default function ServicePage() {
         </div>
       </div>
 
-      {/* Services Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
@@ -158,7 +156,6 @@ export default function ServicePage() {
         </div>
       </div>
 
-      {/* Garanties Section */}
       <div className="bg-white py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4">
@@ -186,7 +183,6 @@ export default function ServicePage() {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
