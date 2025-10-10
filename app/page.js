@@ -138,8 +138,8 @@ export default function Home() {
             {[
               { value: '100+', label: 'Véhicules en stock' },
               { value: '500+', label: 'Clients satisfaits' },
-              { value: '10+', label: "Années d'expérience" },
-              { value: '24/7', label: 'Support client' },
+              { value: '1+', label: "Années d'expérience" },
+              { value: '6/7', label: 'Support client' },
             ].map((stat, index) => (
               <motion.div 
                 key={index}
