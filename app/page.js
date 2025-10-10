@@ -93,7 +93,7 @@ export default function Home() {
               {
                 icon: 'ri-car-line',
                 title: 'Large sélection',
-                text: 'Un vaste choix de véhicules électriques de qualité pour tous les besoins'
+                text: 'Un vaste choix de motos de qualité pour tous les besoins'
               },
               {
                 icon: 'ri-customer-service-2-line',
