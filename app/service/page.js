@@ -45,7 +45,7 @@ export default function ServicePage() {
       inclus: [
         'Diagnostic complet',
         'Devis gratuit',
-        'Pièces d origine',
+        'Pièces d’origine',
         'Garantie réparation'
       ]
     },
@@ -99,6 +99,7 @@ export default function ServicePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Header */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -110,19 +111,25 @@ export default function ServicePage() {
         </div>
       </div>
 
+      {/* Liste des services */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-hidden"
+            >
               <div className="p-8">
-                <div className={`${service.bgColor} w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto`}>
+                <div
+                  className={`${service.bgColor} w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto`}
+                >
                   <i className={`${service.icon} text-4xl ${service.iconColor}`}></i>
                 </div>
-                
+
                 <h3 className="text-2xl font-bold text-gray-800 mb-3 text-center">
                   {service.title}
                 </h3>
-                
+
                 <p className="text-gray-600 mb-6 text-center min-h-[48px]">
                   {service.description}
                 </p>
@@ -133,7 +140,7 @@ export default function ServicePage() {
                 </div>
 
                 <div className="mb-6">
-                  <p className="font-semibold text-gray-800 mb-3">Inclus:</p>
+                  <p className="font-semibold text-gray-800 mb-3">Inclus :</p>
                   <ul className="space-y-2">
                     {service.inclus.map((item, i) => (
                       <li key={i} className="flex items-start text-sm text-gray-600">
@@ -156,6 +163,7 @@ export default function ServicePage() {
         </div>
       </div>
 
+      {/* Garanties */}
       <div className="bg-white py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4">
@@ -168,27 +176,26 @@ export default function ServicePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {garanties.map((garantie, index) => (
               <div key={index} className="text-center">
-                <div className={`${garantie.bgColor} w-24 h-24 rounded-full flex items-center justify-center mb-6 mx-auto`}>
+                <div
+                  className={`${garantie.bgColor} w-24 h-24 rounded-full flex items-center justify-center mb-6 mx-auto`}
+                >
                   <i className={`${garantie.icon} text-5xl ${garantie.iconColor}`}></i>
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">
                   {garantie.title}
                 </h3>
-                <p className="text-gray-600">
-                  {garantie.description}
-                </p>
+                <p className="text-gray-600">{garantie.description}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
+      {/* Section contact */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-         <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Besoin d un service ?
+            Besoin d’un service ?
           </h2>
           <p className="text-xl mb-8 text-red-100 max-w-2xl mx-auto">
             Contactez-nous pour prendre rendez-vous
@@ -200,7 +207,8 @@ export default function ServicePage() {
             >
               Prendre rendez-vous
             </Link>
-            
+
+            <a
               href="tel:0550220589"
               className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
             >
@@ -211,5 +219,4 @@ export default function ServicePage() {
       </div>
     </div>
   );
-}
 }
