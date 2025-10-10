@@ -152,7 +152,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-2">Téléphone</h3>
-                      <a href="tel:0550220589" className="text-gray-600 hover:text-red-600 block">
+                      <a href="tel:0550220588" className="text-gray-600 hover:text-red-600 block">
                         0550 22 05 88
                       </a>
                       <a href="tel:0550220589" className="text-gray-600 hover:text-red-600 block mt-1">
@@ -182,11 +182,62 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-2">Adresse</h3>
-                      <a 
+                      <Link 
                         href="https://maps.app.goo.gl/VzTyuCbgWuFNfEDn9" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="text-gray-600 hover:text-red-600"
                       >
                         Chararba les Eucalyptus, Alger
-                        <i className="ri-external-link-line ml-1"></i>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="bg-red-100 p-3 rounded-lg mr-4">
+                      <i className="ri-facebook-fill text-2xl text-red-600"></i>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800 mb-2">Facebook</h3>
+                      <Link 
+                        href="https://www.facebook.com/p/vms-%D8%A7%D9%84%D9%83%D8%A7%D9%84%D9%8A%D8%AA%D9%88%D8%B3-61577101538256/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-red-600"
+                      >
+                        Visitez notre page Facebook
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-lg p-8 text-white text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              Besoin d aide pour choisir ?
+            </h2>
+            <p className="text-xl mb-6">
+              Notre équipe est là pour vous conseiller
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              
+                href="tel:0550220589"
+                className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              >
+                Appelez-nous
+              </a>
+              <Link
+                href="/vehicules"
+                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
+              >
+                Voir nos véhicules
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
