@@ -4,7 +4,7 @@ import { AuthProvider } from '../lib/AuthContext';
 
 export const metadata = {
   title: 'SARL HAPPY CAR STORE - VMS',
-  description: 'Système de gestion de véhicules électriques',
+  description: 'Système de gestion de motos et scooters ',
 };
 
 export default function RootLayout({ children }) {
