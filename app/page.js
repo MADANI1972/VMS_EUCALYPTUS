@@ -166,8 +166,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Prêt à passer à l'électrique ?
-          </h2>
+            Votre prochaine aventure commence ici !          </h2>
           <p className="text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
             Découvrez notre gamme complète de scooters et motos et trouvez celui qui vous correspond
           </p>
