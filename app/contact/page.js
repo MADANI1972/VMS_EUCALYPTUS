@@ -217,6 +217,9 @@ export default function ContactPage() {
           <div className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-lg p-8 text-white text-center">
             <h2 className="text-3xl font-bold mb-4">
               Besoin d aide pour choisir ?
+          <div className="mt-12 bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-lg p-8 text-white text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              Besoin d aide pour choisir ?
             </h2>
             <p className="text-xl mb-6">
               Notre équipe est là pour vous conseiller
