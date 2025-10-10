@@ -169,7 +169,7 @@ export default function Home() {
             Prêt à passer à l'électrique ?
           </h2>
           <p className="text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
-            Découvrez notre gamme complète de véhicules électriques et trouvez celui qui vous correspond
+            Découvrez notre gamme complète de scooters et motos et trouvez celui qui vous correspond
           </p>
           <motion.div whileHover={{ scale: 1.05 }}>
             <Link 
