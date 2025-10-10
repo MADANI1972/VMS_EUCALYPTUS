@@ -20,7 +20,7 @@ export default function Header() {
               <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">V</span>
               </div>
-              <span className="font-['Pacifico'] text-2xl text-gray-800">VMS</span>
+              <span className="font-['Pacifico'] text-2xl text-gray-800">VMS EUCALYPTUS</span>
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -44,7 +44,7 @@ export default function Header() {
             <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">V</span>
             </div>
-            <span className="font-['Pacifico'] text-2xl text-gray-800">VMS</span>
+            <span className="font-['Pacifico'] text-2xl text-gray-800">VMS EUCALYPTUS</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
