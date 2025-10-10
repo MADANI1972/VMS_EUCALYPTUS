@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion'; // ✅ import pour animations
 
 export default function ServicePage() {
   const services = [
@@ -97,6 +98,16 @@ export default function ServicePage() {
     }
   ];
 
+  // ✅ Animation Framer Motion
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.15, duration: 0.6, ease: 'easeOut' }
+    })
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -115,9 +126,14 @@ export default function ServicePage() {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-hidden"
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              custom={index}
             >
               <div className="p-8">
                 <div
@@ -158,7 +174,7 @@ export default function ServicePage() {
                   Prendre rendez-vous
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -175,7 +191,15 @@ export default function ServicePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {garanties.map((garantie, index) => (
-              <div key={index} className="text-center">
+              <motion.div
+                key={index}
+                className="text-center"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                custom={index}
+              >
                 <div
                   className={`${garantie.bgColor} w-24 h-24 rounded-full flex items-center justify-center mb-6 mx-auto`}
                 >
@@ -185,7 +209,7 @@ export default function ServicePage() {
                   {garantie.title}
                 </h3>
                 <p className="text-gray-600">{garantie.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
